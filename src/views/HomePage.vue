@@ -22,8 +22,6 @@
 </template>
 
 <script setup>
-// import { Carousel } from "ant-design-vue";
-// import { PhArrowCircleLeft, PhArrowCircleRight } from "@phosphor-icons/vue";
 import { useQuery } from "@vue/apollo-composable";
 
 import { HomeBanner } from "@/gql/Home";
@@ -36,29 +34,3 @@ const { result, loading } = useQuery(HomeBanner);
 const { result: productResults, loading: productsLoading } =
   useQuery(ProductsQuery);
 </script>
-
-<style scoped>
-:deep(.slick-arrow.custom-slick-arrow) {
-  width: 25px;
-  height: 25px;
-  font-size: 25px;
-  color: #fff;
-  background-color: rgba(8, 106, 5, 0.11);
-  transition: ease all 0.3s;
-  opacity: 0.3;
-  z-index: 1;
-}
-
-:deep(.slick-arrow.custom-slick-arrow:before) {
-  display: none;
-}
-
-:deep(.slick-arrow.custom-slick-arrow:hover) {
-  color: #fff;
-  opacity: 0.5;
-}
-
-:deep(.slick-slide h3) {
-  color: #fff;
-}
-</style>
