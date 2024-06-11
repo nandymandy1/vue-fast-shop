@@ -16,7 +16,9 @@
     <div class="flex gap-3 items-center">
       <NavLink title="Home" to="/" />
       <NavLink title="About" to="/about" />
-      <NavLink title="Products" to="/products" />
+      <NavLink v-if="!isLoggedIn" title="Login" to="/auth/login" />
+      <NavLink v-if="isLoggedIn" title="Products" to="/dashboard/products" />
+      <NavLink v-if="isLoggedIn" title="Logout" to="/dashboard/logout" />
       <CartDrawer />
     </div>
   </nav>
@@ -25,5 +27,11 @@
 <script setup>
 import NavLink from "@/components/NavLink";
 import CartDrawer from "../CartDrawer.vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
 import { PhStorefront } from "@phosphor-icons/vue";
+
+const store = useStore();
+
+const isLoggedIn = computed(() => store.getters["Auth/isLoggedIn"]);
 </script>
