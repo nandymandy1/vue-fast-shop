@@ -61,12 +61,17 @@ const handleLogin = async () => {
     loading.value = true;
     const { username, password } = userDetails.value;
     await store.dispatch("Auth/loginUser", { username, password });
+    notification.success({
+      placement: "topRight",
+      message: "Login Success",
+      description: "Logged in Successfully.",
+    });
     router.replace("/dashboard/products");
   } catch (err) {
     notification.error({
       message: err.message,
       placement: "topRight",
-      description: "Unable to login",
+      description: "Unable to login.",
     });
   } finally {
     loading.value = false;
